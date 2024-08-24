@@ -9,36 +9,47 @@ AllowNotTTY="" # маркер для работы не только в tty
 declare -A Mess_RunInTTY
 Mess_RunInTTY[en]="Run in TTY instead of the PTS"
 Mess_RunInTTY[ru]="Запустите в TTY вместо PTS"
+
 declare -A Mess_CurrentDM
 Mess_CurrentDM[en]="Current $DMM"
 Mess_CurrentDM[ru]="Текущий $DMM"
+
 declare -A Mess_UnableToDetectCurrentDM
 Mess_UnableToDetectCurrentDM[en]="Unable to detect current $DMM service"
 Mess_UnableToDetectCurrentDM[ru]="Не удалось определить текущий сервис $DMM"
+
 declare -A Mess_NoDMFounded
 Mess_NoDMFounded[en]="No one $DMM service founded"
 Mess_NoDMFounded[ru]="Ни одного $DMM не найдено"
+
 declare -A Mess_AvailableList
 Mess_AvailableList[en]="List of available:"
 Mess_AvailableList[ru]="Список доступных:"
+
 declare -A Mess_SelectNumberToChange
 Mess_SelectNumberToChange[en]="Select number to change"
 Mess_SelectNumberToChange[ru]="Выберите номер для смены"
+
 declare -A Mess_SelectedService
 Mess_SelectedService[en]="Selected service"
 Mess_SelectedService[ru]="Выбрана служба"
+
 declare -A Mess_Failed
 Mess_Failed[en]="Failed"
 Mess_Failed[ru]="Не удалось"
+
 declare -A Mess_ToRun
 Mess_ToRun[en]="to run"
 Mess_ToRun[ru]="запустить"
+
 declare -A Mess_toEnable
 Mess_toEnable[en]="to enable"
 Mess_toEnable[ru]="включить"
+
 declare -A Mess_toDisable
 Mess_toDisable[en]="to disable"
 Mess_toDisable[ru]="отключить"
+
 declare -A Mess_toStop
 Mess_toStop[en]="to stop"
 Mess_toStop[ru]="остановить"
@@ -48,7 +59,7 @@ Mess_toStop[ru]="остановить"
 # список индексов массива сообщений
 LangList=${!Mess_RunInTTY[@]}
 
-function InTTY(){ tty|grep -E '/(tty)?[0-9]+'; }
+function InTTY(){ pstree -s $$|grep -E '\-login-'; }
 
 function debug(){ echo >&2 "$@"; }
 
