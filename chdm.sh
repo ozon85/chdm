@@ -48,7 +48,7 @@ Mess_toStop[ru]="остановить"
 # список индексов массива сообщений
 LangList=${!Mess_RunInTTY[@]}
 
-function InTTY(){ tty|grep -E 'tty[0-9]+'; }
+function InTTY(){ tty|grep -E '/(tty)?[0-9]+'; }
 
 function debug(){ echo >&2 "$@"; }
 
